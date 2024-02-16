@@ -1,0 +1,208 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Ecommerce",
+    "dateExported": "2024-02-16T11:51:03.822Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "56eb9177-947f-44db-9b56-3f9e1fa17b83",
+            "colId": "d93e4db4-1c2c-41e2-a32b-9bb64b1d9084",
+            "containerId": "",
+            "name": "search",
+            "url": "http://localhost:3000/api/search?searchParam=apple",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-15T11:58:43.587Z",
+            "modified": "2024-02-16T05:50:59.173Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "searchParam",
+                    "value": "apple",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "text",
+                "raw": "A",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c2f9f1a6-0210-474f-8908-97a5ca498687",
+            "colId": "d93e4db4-1c2c-41e2-a32b-9bb64b1d9084",
+            "containerId": "",
+            "name": "checkout",
+            "url": "http://localhost:3000/api/search?id=2&quantity=2",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-02-15T11:59:56.226Z",
+            "modified": "2024-02-16T05:55:57.740Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "2",
+                    "isPath": false
+                },
+                {
+                    "name": "quantity",
+                    "value": "2",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "c4b29d7b-5622-4d48-a7c9-ae060860ab7b",
+            "colId": "d93e4db4-1c2c-41e2-a32b-9bb64b1d9084",
+            "containerId": "",
+            "name": "order",
+            "url": "http://localhost:3000/api/order?id=2&address=Bangalore",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-15T15:31:32.450Z",
+            "modified": "2024-02-16T05:58:37.441Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "2",
+                    "isPath": false
+                },
+                {
+                    "name": "address",
+                    "value": "Bangalore",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "b261f31e-b33d-4ee8-9c44-4ad409df6d11",
+            "colId": "d93e4db4-1c2c-41e2-a32b-9bb64b1d9084",
+            "containerId": "",
+            "name": "post_product",
+            "url": "http://localhost:3000/api",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-02-15T16:06:54.830Z",
+            "modified": "2024-02-15T16:14:11.554Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productId\": 5,\n  \"productName\": \"New Product\",\n  \"description\": \"Newly added product through post_product\",\n  \"price\": 50,\n  \"stock\": 100,\n  \"imageUrl\": \"https://example.com/prod.jpg\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5c39752a-887c-45f0-afc8-45bc8cc32ed9",
+            "colId": "d93e4db4-1c2c-41e2-a32b-9bb64b1d9084",
+            "containerId": "",
+            "name": "put_product_id",
+            "url": "http://localhost:3000/api/id?id=1&quantity=100",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-02-15T16:16:21.040Z",
+            "modified": "2024-02-15T16:50:51.823Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                },
+                {
+                    "name": "quantity",
+                    "value": "100",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "cecfabc6-305e-4d31-8267-7df41d8a790f",
+            "colId": "d93e4db4-1c2c-41e2-a32b-9bb64b1d9084",
+            "containerId": "",
+            "name": "delete_product",
+            "url": "http://localhost:3000/api/id?id=4",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2024-02-15T16:51:48.863Z",
+            "modified": "2024-02-15T17:05:12.593Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "4",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "6ad9dbca-b0a1-4083-b62c-92473c51771e",
+            "colId": "d93e4db4-1c2c-41e2-a32b-9bb64b1d9084",
+            "containerId": "",
+            "name": "get_product",
+            "url": "http://localhost:3000/api/details?id=5",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-02-15T18:40:28.169Z",
+            "modified": "2024-02-15T18:45:37.118Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "5",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "f0fc2aea-672e-4c99-a99b-05d8511175d0",
+            "colId": "d93e4db4-1c2c-41e2-a32b-9bb64b1d9084",
+            "containerId": "",
+            "name": "status",
+            "url": "http://localhost:3000/api/status?orderid=cee79ecd-9468-49a8-84ce-c3b22969db0c",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-02-15T18:50:57.303Z",
+            "modified": "2024-02-16T05:20:41.805Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "orderid",
+                    "value": "cee79ecd-9468-49a8-84ce-c3b22969db0c",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "d776da95-9252-4e69-ac8e-956e9f7908ce",
+            "colId": "d93e4db4-1c2c-41e2-a32b-9bb64b1d9084",
+            "containerId": "",
+            "name": "cancel",
+            "url": "http://localhost:3000/api/cancel?cancelid=61fe0475-a36a-459b-b4eb-a4ec3138a7a0",
+            "method": "DELETE",
+            "sortNum": 120000,
+            "created": "2024-02-15T19:04:18.081Z",
+            "modified": "2024-02-16T05:19:06.548Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "cancelid",
+                    "value": "61fe0475-a36a-459b-b4eb-a4ec3138a7a0",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        }
+    ]
+}
