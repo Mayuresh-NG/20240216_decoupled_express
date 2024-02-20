@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require("uuid");
 const fs = require("fs");
 
 // mongo imports
-const Model = require("./schema.js");
+const Model = require("./schema/schema.js");
 
 function handleMongoRoutes(app) {
   app.use(bodyParser.json());
@@ -42,7 +42,7 @@ function handleMongoRoutes(app) {
     const checkoutquantity = req.query.quantity;
 
     // Check if id or quantity is missing
-    if (!checkoutid || !checkoutquantity) {
+    if (!checkoutid || !checkoutquantity || checkoutquantity<=0) {
       return res.status(400).json({
         error: "Missing id or quantity in the request query parameters",
       });
@@ -137,13 +137,7 @@ function handleMongoRoutes(app) {
     // Extract id and quantity from query parameters
     const checkoutid = req.query.id;
     const checkoutquantity = req.query.quantity;
-
-    // Check if id or quantity is missing
-    if (!checkoutid || !checkoutquantity) {
-      return res.status(400).json({
-        error: "Missing id or quantity in the request query parameters",
-      });
-    }
+    const checkoutprice = req.query.price;
 
     try {
       // Find the product in MongoDB
@@ -153,15 +147,35 @@ function handleMongoRoutes(app) {
 
       // Respond based on whether the product is found
       if (product) {
+        if(checkoutquantity && checkoutprice)
+        {
+          product.stock = parseInt(checkoutquantity, 10);
+          product.price = parseInt(checkoutprice, 10);
+          await product.save();
+          res.json({
+            success: "price and stock updated successfully",
+            updatedProduct: product,
+          });
+        }
         // Update the stock of the product
-        product.stock = parseInt(checkoutquantity, 10);
-        await product.save();
-
-        // Respond with success and updated product details
-        res.json({
-          success: "Stock updated successfully",
-          updatedProduct: product,
-        });
+        else if(checkoutquantity)
+        {
+          product.stock = parseInt(checkoutquantity, 10);
+          await product.save();
+          res.json({
+            success: "Stock updated successfully",
+            updatedProduct: product,
+          });
+        }
+        else if(checkoutprice)
+        { 
+          product.price = parseInt(checkoutprice, 10);
+          await product.save();
+          res.json({
+            success: "price updated successfully",
+            updatedProduct: product,
+          });
+        }
       } else {
         res.status(404).json({ error: "Product not found" });
       }
@@ -323,8 +337,8 @@ function handleMongoRoutes(app) {
 
 function handleJsonRoutes(app) {
   app.use(bodyParser.json());
-  const productsData = JSON.parse(fs.readFileSync("products.json", "utf8"));
-  const orderData = JSON.parse(fs.readFileSync("order.json", "utf8"));
+  const productsData = JSON.parse(fs.readFileSync("./jsondb/products.json", "utf8"));
+  const orderData = JSON.parse(fs.readFileSync("./jsondb/order.json", "utf8"));
 
   // For searching items in the database
   app.get("/api/search", (req, res) => {

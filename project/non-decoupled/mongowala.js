@@ -3,11 +3,14 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const Model = require("./schema.js");
 const { v4: uuidv4 } = require("uuid");
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(
   "mongodb+srv://mayureshngorantiwar:4pH5dvC4d7XRUe8O@cluster0.sdnavtq.mongodb.net/ecoomerce_db"
@@ -18,7 +21,9 @@ app.get("/api/search", async (req, res) => {
   try {
     // Extract searchParam from query parameters
     const searchParam = req.query.searchParam;
+    console.log('Received query parameters:', searchParam);
 
+    
     // Check if searchParam is missing
     if (!searchParam) {
       return res
